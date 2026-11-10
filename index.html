@@ -1,0 +1,970 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Музыкальная группа [ИМЯ]: концерты, вокальная студия и бюджетные музыкальные занятия для дошкольников.">
+<title>[ИМЯ] — музыкальная группа, вокал и занятия для дошкольников</title>
+<style>
+:root {
+  --bg: #09090b;
+  --panel: #141419;
+  --panel-2: #1b1b22;
+  --text: #f5f5f5;
+  --muted: #a9a9b5;
+  --accent: #ff3b30;
+  --accent-2: #ffd43b;
+  --border: #2a2a35;
+  --radius: 16px;
+  --shadow: 0 20px 60px rgba(0,0,0,.35);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+  color: var(--text);
+  background: var(--bg);
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button,
+input,
+textarea,
+select {
+  font: inherit;
+}
+
+.container {
+  width: min(1180px, calc(100% - 32px));
+  margin-inline: auto;
+}
+
+.section {
+  padding: 88px 0;
+  border-top: 1px solid var(--border);
+}
+
+.section-head {
+  max-width: 760px;
+  margin-bottom: 32px;
+}
+
+.section-head h2 {
+  font-size: clamp(1.8rem, 4vw, 3rem);
+  line-height: 1.1;
+  margin: 0 0 12px;
+}
+
+.section-head p {
+  color: var(--muted);
+  margin: 0;
+}
+
+.kicker {
+  color: var(--accent-2);
+  text-transform: uppercase;
+  letter-spacing: .16em;
+  font-weight: 800;
+  font-size: .78rem;
+  margin: 0 0 14px;
+}
+
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background: rgba(9,9,11,.82);
+  backdrop-filter: blur(14px);
+  border-bottom: 1px solid var(--border);
+}
+
+.header-inner {
+  min-height: 68px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.logo {
+  font-weight: 950;
+  letter-spacing: .05em;
+  font-size: 1.15rem;
+}
+
+.logo span {
+  color: var(--accent);
+}
+
+.nav {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+
+.nav a {
+  padding: 10px 12px;
+  border-radius: 999px;
+  color: var(--muted);
+  font-weight: 600;
+  font-size: .94rem;
+}
+
+.nav a:hover {
+  color: var(--text);
+  background: var(--panel-2);
+}
+
+.burger {
+  display: none;
+  background: var(--panel);
+  color: var(--text);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 8px 12px;
+  cursor: pointer;
+}
+
+.hero {
+  min-height: calc(100vh - 68px);
+  display: grid;
+  place-items: center;
+  padding: 80px 0;
+  position: relative;
+  overflow: hidden;
+  background:
+    radial-gradient(circle at 15% 20%, rgba(255,59,48,.25), transparent 34%),
+    radial-gradient(circle at 85% 10%, rgba(255,212,59,.16), transparent 28%),
+    linear-gradient(180deg, #101015 0%, #09090b 100%);
+}
+
+.hero::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(255,255,255,.035) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,.035) 1px, transparent 1px);
+  background-size: 48px 48px;
+  mask-image: linear-gradient(to bottom, black, transparent 85%);
+  pointer-events: none;
+}
+
+.hero .container {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: 1.25fr .75fr;
+  gap: 42px;
+  align-items: center;
+}
+
+.hero h1 {
+  margin: 0;
+  font-size: clamp(2.3rem, 6vw, 5.6rem);
+  line-height: .95;
+  letter-spacing: -.03em;
+  text-transform: uppercase;
+}
+
+.hero h1 span {
+  color: var(--accent);
+}
+
+.hero p {
+  color: var(--muted);
+  max-width: 620px;
+  font-size: 1.08rem;
+}
+
+.hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 28px;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 13px 20px;
+  border-radius: 999px;
+  border: 1px solid transparent;
+  background: var(--accent);
+  color: #fff;
+  font-weight: 800;
+  cursor: pointer;
+  transition: transform .2s, background .2s, border-color .2s;
+}
+
+.btn:hover {
+  transform: translateY(-2px);
+  background: #ff5a50;
+}
+
+.btn-outline {
+  background: transparent;
+  border-color: var(--border);
+  color: var(--text);
+}
+
+.btn-outline:hover {
+  border-color: var(--accent-2);
+  background: rgba(255,212,59,.08);
+}
+
+.hero-card {
+  background: linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.02));
+  border: 1px solid var(--border);
+  border-radius: calc(var(--radius) + 8px);
+  padding: 24px;
+  box-shadow: var(--shadow);
+}
+
+.hero-card ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  gap: 14px;
+}
+
+.hero-card li {
+  display: flex;
+  justify-content: space-between;
+  gap: 14px;
+  padding-bottom: 14px;
+  border-bottom: 1px solid var(--border);
+  color: var(--muted);
+}
+
+.hero-card li:last-child {
+  border-bottom: 0;
+  padding-bottom: 0;
+}
+
+.hero-card strong {
+  color: var(--text);
+  text-align: right;
+}
+
+.grid-2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+.grid-3 {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+.card {
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 24px;
+}
+
+.card h3 {
+  margin-top: 0;
+  margin-bottom: 10px;
+}
+
+.card p {
+  color: var(--muted);
+  margin-top: 0;
+}
+
+.badge {
+  display: inline-flex;
+  padding: 5px 10px;
+  border-radius: 999px;
+  background: rgba(255,59,48,.12);
+  color: #ff8a84;
+  font-weight: 700;
+  font-size: .8rem;
+}
+
+.track {
+  display: grid;
+  gap: 8px;
+}
+
+.track audio {
+  width: 100%;
+  margin-top: 8px;
+}
+
+.price {
+  font-size: 2rem;
+  font-weight: 900;
+  margin: 6px 0;
+}
+
+.price small {
+  font-size: .85rem;
+  color: var(--muted);
+  font-weight: 500;
+}
+
+.list-check {
+  list-style: none;
+  padding: 0;
+  margin: 18px 0 0;
+  display: grid;
+  gap: 10px;
+}
+
+.list-check li {
+  position: relative;
+  padding-left: 28px;
+  color: var(--muted);
+}
+
+.list-check li::before {
+  content: "✓";
+  position: absolute;
+  left: 0;
+  top: 0;
+  color: var(--accent-2);
+  font-weight: 900;
+}
+
+.schedule-wrap {
+  overflow-x: auto;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  overflow: hidden;
+}
+
+th,
+td {
+  padding: 14px 16px;
+  text-align: left;
+  border-bottom: 1px solid var(--border);
+}
+
+th {
+  background: var(--panel-2);
+  font-size: .8rem;
+  text-transform: uppercase;
+  letter-spacing: .08em;
+  color: var(--muted);
+}
+
+tr:last-child td {
+  border-bottom: 0;
+}
+
+.contact-grid {
+  display: grid;
+  grid-template-columns: .9fr 1.1fr;
+  gap: 24px;
+  align-items: start;
+}
+
+.form {
+  display: grid;
+  gap: 14px;
+}
+
+.field {
+  display: grid;
+  gap: 6px;
+}
+
+.field label {
+  font-weight: 700;
+  font-size: .92rem;
+}
+
+.field input,
+.field select,
+.field textarea {
+  width: 100%;
+  padding: 12px 14px;
+  background: var(--panel-2);
+  color: var(--text);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  outline: none;
+}
+
+.field input:focus,
+.field select:focus,
+.field textarea:focus {
+  border-color: var(--accent-2);
+  box-shadow: 0 0 0 3px rgba(255,212,59,.12);
+}
+
+.field textarea {
+  min-height: 110px;
+  resize: vertical;
+}
+
+.checkbox {
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+  color: var(--muted);
+  font-size: .92rem;
+}
+
+.checkbox input {
+  width: auto;
+  margin-top: 4px;
+}
+
+.contact-list {
+  display: grid;
+  gap: 14px;
+  margin-top: 18px;
+}
+
+.contact-item {
+  display: flex;
+  gap: 12px;
+  padding: 14px;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  background: var(--panel);
+}
+
+.contact-item strong {
+  display: block;
+  margin-bottom: 2px;
+}
+
+.contact-item span {
+  color: var(--muted);
+}
+
+footer {
+  padding: 36px 0;
+  border-top: 1px solid var(--border);
+  color: var(--muted);
+}
+
+.footer-inner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+@media (max-width: 980px) {
+  .hero .container {
+    grid-template-columns: 1fr;
+  }
+
+  .grid-3 {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .contact-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 720px) {
+  .section {
+    padding: 62px 0;
+  }
+
+  .nav {
+    display: none;
+    position: absolute;
+    top: 68px;
+    left: 16px;
+    right: 16px;
+    padding: 12px;
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    background: rgba(20,20,25,.98);
+    box-shadow: var(--shadow);
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .nav.open {
+    display: flex;
+  }
+
+  .nav a {
+    padding: 12px 14px;
+    border-radius: 10px;
+  }
+
+  .burger {
+    display: inline-block;
+  }
+
+  .grid-2,
+  .grid-3 {
+    grid-template-columns: 1fr;
+  }
+
+  .hero {
+    min-height: auto;
+  }
+
+  .hero h1 {
+    font-size: clamp(2.3rem, 12vw, 4rem);
+  }
+
+  .hero-card {
+    order: 2;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  .btn {
+    transition: none;
+  }
+}
+</style>
+</head>
+<body>
+
+<!-- Замените [ИМЯ], контакты, цены и ссылки на свои. -->
+
+<header class="header">
+  <div class="container header-inner">
+    <a class="logo" href="#home">[ИМЯ]<span>.</span></a>
+
+    <nav class="nav" id="nav">
+      <a href="#band">Группа</a>
+      <a href="#music">Музыка</a>
+      <a href="#vocal">Вокал</a>
+      <a href="#preschool">Дошкольникам</a>
+      <a href="#prices">Цены</a>
+      <a href="#contact">Заявка</a>
+    </nav>
+
+    <button class="burger" id="burger" aria-label="Открыть меню" aria-expanded="false">☰</button>
+  </div>
+</header>
+
+<main>
+
+  <section class="hero" id="home">
+    <div class="container">
+      <div>
+        <p class="kicker">Музыка, вокал и занятия для детей</p>
+        <h1>Играем на сцене. Учим петь. Растим музыкантов.</h1>
+        <p>
+          Живые концерты, вокальная студия для детей и взрослых
+          и доступные музыкальные занятия для дошкольников.
+          В одном месте и в понятном формате.
+        </p>
+        <div class="hero-actions">
+          <a class="btn" href="#contact">Записаться на занятие</a>
+          <a class="btn btn-outline" href="#music">Слушать группу</a>
+        </div>
+      </div>
+
+      <aside class="hero-card">
+        <ul>
+          <li><span>Выступления</span><strong>праздники и события</strong></li>
+          <li><span>Вокал</span><strong>дети 4+ и взрослые</strong></li>
+          <li><span>Дошкольникам</span><strong>доступные группы</strong></li>
+          <li><span>Пробное занятие</span><strong>по записи</strong></li>
+        </ul>
+      </aside>
+    </div>
+  </section>
+
+  <section class="section" id="band">
+    <div class="container">
+      <div class="section-head">
+        <p class="kicker">О нас</p>
+        <h2>Живая группа и музыкальная студия</h2>
+        <p>
+          Играем свои песни и проверенные каверы, выступаем на событиях.
+          Рядом работает вокальная студия, где занимаются дети и взрослые.
+        </p>
+      </div>
+
+      <div class="grid-2">
+        <article class="card">
+          <span class="badge">Живой звук</span>
+          <h3>Группа [ИМЯ]</h3>
+          <p>
+            Вокал, гитара, бас и барабаны. Подбираем программу под площадку
+            и аудиторию. На сцене — живое исполнение и уважение к слушателям.
+          </p>
+        </article>
+
+        <article class="card">
+          <span class="badge">Занятия</span>
+          <h3>Вокал и музыка для детей</h3>
+          <p>
+            Развиваем слух, чувство ритма и голос мягко и последовательно.
+            Сначала интерес и уверенность, затем техника и сценический опыт.
+          </p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="music">
+    <div class="container">
+      <div class="section-head">
+        <p class="kicker">Музыка</p>
+        <h2>Записи группы</h2>
+        <p>
+          Замените демонстрационные файлы в папке <code>audio</code> на свои записи.
+          Если аудио пока нет, удалите блоки с плеерами.
+        </p>
+      </div>
+
+      <div class="grid-3">
+        <article class="card track">
+          <span class="badge">Сингл</span>
+          <h3>Название трека 1</h3>
+          <p>Короткое описание песни или записи.</p>
+          <audio controls preload="none">
+            <source src="audio/track-1.mp3" type="audio/mpeg">
+            Ваш браузер не поддерживает аудио.
+          </audio>
+        </article>
+
+        <article class="card track">
+          <span class="badge">Концерт</span>
+          <h3>Название трека 2</h3>
+          <p>Живая запись с выступления.</p>
+          <audio controls preload="none">
+            <source src="audio/track-2.mp3" type="audio/mpeg">
+            Ваш браузер не поддерживает аудио.
+          </audio>
+        </article>
+
+        <article class="card track">
+          <span class="badge">Демо</span>
+          <h3>Название трека 3</h3>
+          <p>Демонстрационная версия для новых площадок.</p>
+          <audio controls preload="none">
+            <source src="audio/track-3.mp3" type="audio/mpeg">
+            Ваш браузер не поддерживает аудио.
+          </audio>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="vocal">
+    <div class="container">
+      <div class="section-head">
+        <p class="kicker">Вокал</p>
+        <h2>Занятия для детей и взрослых</h2>
+        <p>
+          Помогаем раскрыть голос, развить слух и чувство ритма,
+          подготовиться к выступлению и почувствовать себя увереннее.
+        </p>
+      </div>
+
+      <div class="grid-2">
+        <article class="card">
+          <h3>Дети 4–7 лет</h3>
+          <p>
+            Игровой формат: распевки, ритмические упражнения, песни
+            и сценическое движение. Небольшие группы и внимательный темп.
+          </p>
+          <ul class="list-check">
+            <li>группы до 8 человек</li>
+            <li>развитие слуха и чувства ритма</li>
+            <li>подготовка к выступлениям</li>
+          </ul>
+        </article>
+
+        <article class="card">
+          <h3>Подростки и взрослые</h3>
+          <p>
+            Постановка голоса, дыхание, работа с зажимами,
+            микрофон и разбор репертуара. Для себя или для сцены.
+          </p>
+          <ul class="list-check">
+            <li>индивидуальные занятия</li>
+            <li>вокальная техника и дыхание</li>
+            <li>работа с репертуаром</li>
+          </ul>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="preschool">
+    <div class="container">
+      <div class="section-head">
+        <p class="kicker">Дошкольникам</p>
+        <h2>Доступные музыкальные занятия</h2>
+        <p>
+          Занятия для знакомства с музыкой, развития слуха, ритма и голоса.
+          Небольшие группы, спокойная атмосфера и понятная стоимость.
+        </p>
+      </div>
+
+      <div class="grid-3">
+        <article class="card">
+          <h3>Мини-группа</h3>
+          <p>
+            До 8 детей. Внимание каждому ребёнку и комфортный темп занятий.
+          </p>
+          <ul class="list-check">
+            <li>музыкальное развитие</li>
+            <li>распевки и песни</li>
+            <li>ритм и движение</li>
+          </ul>
+        </article>
+
+        <article class="card">
+          <h3>Пробное занятие</h3>
+          <p>
+            Возможность познакомиться с педагогом и посмотреть,
+            как ребёнок включается в занятие.
+          </p>
+          <ul class="list-check">
+            <li>знакомство с педагогом</li>
+            <li>диагностика слуха и ритма</li>
+            <li>рекомендации родителям</li>
+          </ul>
+        </article>
+
+        <article class="card">
+          <h3>Доступная цена</h3>
+          <p>
+            Бюджетный формат для дошкольников. Точную сумму
+            и расписание укажите из своих условий.
+          </p>
+          <div class="price">[2 500] ₽ <small>/ месяц</small></div>
+          <p>Замените цену на актуальную.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="prices">
+    <div class="container">
+      <div class="section-head">
+        <p class="kicker">Цены</p>
+        <h2>Стоимость занятий и выступлений</h2>
+        <p>
+          Типовая таблица. Замените цифры на свои.
+          Если стоимость зависит от условий, укажите вилку.
+        </p>
+      </div>
+
+      <div class="schedule-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Услуга</th>
+              <th>Формат</th>
+              <th>Цена</th>
+              <th>Примечание</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Вокал для дошкольников</td>
+              <td>группа, 2 раза в неделю</td>
+              <td>[2 500] ₽ / месяц</td>
+              <td>до 8 человек</td>
+            </tr>
+            <tr>
+              <td>Вокал индивидуально</td>
+              <td>45 минут</td>
+              <td>[1 000] ₽</td>
+              <td>дети 4+ и взрослые</td>
+            </tr>
+            <tr>
+              <td>Выступление группы</td>
+              <td>45–90 минут</td>
+              <td>от [20 000] ₽</td>
+              <td>зависит от площадки и оборудования</td>
+            </tr>
+            <tr>
+              <td>Музыкальные занятия для дошкольников</td>
+              <td>абонемент</td>
+              <td>[2 000–3 000] ₽ / месяц</td>
+              <td>уточняйте по набору</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="contact">
+    <div class="container">
+      <div class="section-head">
+        <p class="kicker">Заявка</p>
+        <h2>Оставить заявку</h2>
+        <p>
+          Заполните форму, и мы свяжемся с вами:
+          уточним возраст, задачу и подходящее время.
+        </p>
+      </div>
+
+      <div class="contact-grid">
+        <div class="card">
+          <h3>Контакты</h3>
+          <p>
+            Замените данные на свои реальные контакты и ссылки на соцсети.
+          </p>
+
+          <div class="contact-list">
+            <div class="contact-item">
+              <div>
+                <strong>Телефон</strong>
+                <span>+7 (___) ___-__-__</span>
+              </div>
+            </div>
+
+            <div class="contact-item">
+              <div>
+                <strong>Email</strong>
+                <span>hello@example.ru</span>
+              </div>
+            </div>
+
+            <div class="contact-item">
+              <div>
+                <strong>Соцсети</strong>
+                <span>VK / Telegram / YouTube — вставьте ссылки</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Для реальной отправки замените your-form-id на ID формы Formspree или другой обработчик. -->
+        <form
+          class="card form"
+          id="contactForm"
+          action="https://formspree.io/f/your-form-id"
+          method="POST"
+        >
+          <input type="hidden" name="_subject" value="Заявка с сайта [ИМЯ]">
+
+          <div class="field">
+            <label for="name">Имя</label>
+            <input
+              id="name"
+              name="name"
+              type="text"
+              placeholder="Как к вам обращаться"
+              autocomplete="name"
+              required
+            >
+          </div>
+
+          <div class="field">
+            <label for="phone">Телефон или Telegram</label>
+            <input
+              id="phone"
+              name="phone"
+              type="text"
+              placeholder="+7..."
+              autocomplete="tel"
+              required
+            >
+          </div>
+
+          <div class="field">
+            <label for="interest">Что вас интересует</label>
+            <select id="interest" name="interest">
+              <option>Вокал для ребёнка</option>
+              <option>Вокал для взрослого</option>
+              <option>Музыкальные занятия для дошкольников</option>
+              <option>Выступление группы</option>
+              <option>Другое</option>
+            </select>
+          </div>
+
+          <div class="field">
+            <label for="message">Сообщение</label>
+            <textarea
+              id="message"
+              name="message"
+              placeholder="Коротко: возраст ребёнка, задача, удобное время"
+            ></textarea>
+          </div>
+
+          <label class="checkbox">
+            <input type="checkbox" name="consent" required>
+            <span>Согласен на обработку персональных данных</span>
+          </label>
+
+          <button class="btn" type="submit">Отправить заявку</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="container footer-inner">
+    <span>© <span id="year"></span> [ИМЯ]. Все права защищены.</span>
+    <span>Музыка, вокал и занятия для детей.</span>
+  </div>
+</footer>
+
+<script>
+const burger = document.getElementById('burger');
+const nav = document.getElementById('nav');
+
+if (burger && nav) {
+  burger.addEventListener('click', () => {
+    const isOpen = nav.classList.toggle('open');
+    burger.setAttribute('aria-expanded', String(isOpen));
+  });
+
+  document.querySelectorAll('.nav a').forEach((link) => {
+    link.addEventListener('click', () => {
+      nav.classList.remove('open');
+      burger.setAttribute('aria-expanded', 'false');
+    });
+  });
+}
+
+document.getElementById('year').textContent = new Date().getFullYear();
+</script>
+
+</body>
+</html>
