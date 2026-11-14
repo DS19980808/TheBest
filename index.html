@@ -972,4 +972,21 @@ document.getElementById('year').textContent = new Date().getFullYear();
 </script>
 
 </body>
+  <div id="lightbox" style="display:none; position:fixed; inset:0; background:rgba(0,0,0,.92); z-index:9999; align-items:center; justify-content:center; cursor:zoom-out; padding:20px;">
+  <img id="lightbox-img" src="" alt="" style="max-width:95%; max-height:95%; border-radius:12px;">
+</div>
+<script>
+document.addEventListener('click', function(e){
+  var img = e.target.closest('#gallery img, #awards img');
+  if (img) {
+    document.getElementById('lightbox-img').src = img.src;
+    document.getElementById('lightbox').style.display = 'flex';
+  } else if (e.target.id === 'lightbox' || e.target.id === 'lightbox-img') {
+    document.getElementById('lightbox').style.display = 'none';
+  }
+});
+document.addEventListener('keydown', function(e){
+  if (e.key === 'Escape') document.getElementById('lightbox').style.display = 'none';
+});
+</script>
 </html>
