@@ -574,6 +574,7 @@ footer {
       <a href="#rehearsal">База</a>
       <a href="#gallery">Галерея</a>
       <a href="#awards">Награды</a>
+      <a href="#trips">Поездки</a>
       <a href="#video">Видео</a>
       <a href="#contact">Заявка</a>
     </nav>
@@ -830,6 +831,32 @@ footer {
     </div>
   </div>
 </section>
+  <section id="trips" class="section">
+  <div class="container">
+    <div class="section-head">
+      <p class="kicker">Вокальные конкурсы</p>
+      <h2>Поездки с воспитанниками</h2>
+    </div>
+    <div style="display:grid; grid-template-columns:repeat(auto-fill,minmax(150px,1fr)); gap:12px;">
+      <img src="trips/trip1.jpg" alt="Поездка" style="width:100%; aspect-ratio:4/3; object-fit:cover; border-radius:12px;">
+      <img src="trips/trip2.jpg" alt="Поездка" style="width:100%; aspect-ratio:4/3; object-fit:cover; border-radius:12px;">
+      <img src="trips/trip3.jpg" alt="Поездка" style="width:100%; aspect-ratio:4/3; object-fit:cover; border-radius:12px;">
+      <img src="trips/trip4.jpg" alt="Поездка" style="width:100%; aspect-ratio:4/3; object-fit:cover; border-radius:12px;">
+      <img src="trips/trip5.jpg" alt="Поездка" style="width:100%; aspect-ratio:4/3; object-fit:cover; border-radius:12px;">
+      <img src="trips/trip6.jpg" alt="Поездка" style="width:100%; aspect-ratio:4/3; object-fit:cover; border-radius:12px;">
+      <img src="trips/trip7.jpg" alt="Поездка" style="width:100%; aspect-ratio:4/3; object-fit:cover; border-radius:12px;">
+      <img src="trips/trip8.jpg" alt="Поездка" style="width:100%; aspect-ratio:4/3; object-fit:cover; border-radius:12px;">
+      <img src="trips/trip9.jpg" alt="Поездка" style="width:100%; aspect-ratio:4/3; object-fit:cover; border-radius:12px;">
+      <img src="trips/trip10.jpg" alt="Поездка" style="width:100%; aspect-ratio:4/3; object-fit:cover; border-radius:12px;">
+      <img src="trips/trip11.jpg" alt="Поездка" style="width:100%; aspect-ratio:4/3; object-fit:cover; border-radius:12px;">
+      <img src="trips/trip12.jpg" alt="Поездка" style="width:100%; aspect-ratio:4/3; object-fit:cover; border-radius:12px;">
+      <img src="trips/trip13.jpg" alt="Поездка" style="width:100%; aspect-ratio:4/3; object-fit:cover; border-radius:12px;">
+      <img src="trips/trip14.jpg" alt="Поездка" style="width:100%; aspect-ratio:4/3; object-fit:cover; border-radius:12px;">
+      <img src="trips/trip15.jpg" alt="Поездка" style="width:100%; aspect-ratio:4/3; object-fit:cover; border-radius:12px;">
+      <img src="trips/trip16.jpg" alt="Поездка" style="width:100%; aspect-ratio:4/3; object-fit:cover; border-radius:12px;">
+    </div>
+  </div>
+</section>
   <section class="section" id="contact">
     <div class="container">
       <div class="section-head">
@@ -972,7 +999,7 @@ document.getElementById('year').textContent = new Date().getFullYear();
 </div>
 <script>
 document.addEventListener('click', function(e){
-  var img = e.target.closest('#gallery img, #awards img');
+ var img = e.target.closest('#gallery img, #awards img, #trips img');
   if (img) {
     document.getElementById('lightbox-img').src = img.src;
     document.getElementById('lightbox').style.display = 'flex';
