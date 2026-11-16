@@ -1044,4 +1044,23 @@ document.addEventListener('keydown', function(e){
   if (e.key === 'Escape') document.getElementById('lightbox').style.display = 'none';
 });
 </script>
+  <div id="cupModal" style="display:none; position:fixed; inset:0; background:rgba(0,0,0,.92); z-index:9999; align-items:center; justify-content:center; padding:20px;" onclick="if(event.target===this)this.style.display='none'">
+  <div style="background:#141419; border:1px solid #2a2a35; border-radius:16px; padding:28px; max-width:520px; width:100%;">
+    <h3 id="cupTitle" style="margin-top:0;"></h3>
+    <p id="cupDesc" style="color:#a9a9b5; margin-bottom:0;"></p>
+  </div>
+</div>
+<script>
+document.addEventListener('click', function(e){
+  var cup = e.target.closest('.cup');
+  if (cup) {
+    document.getElementById('cupTitle').textContent = cup.dataset.title;
+    document.getElementById('cupDesc').textContent = cup.dataset.desc;
+    document.getElementById('cupModal').style.display = 'flex';
+  }
+});
+document.addEventListener('keydown', function(e){
+  if (e.key === 'Escape') document.getElementById('cupModal').style.display = 'none';
+});
+</script>
 </html>
