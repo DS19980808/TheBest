@@ -576,7 +576,6 @@ footer {
       <a href="#rehearsal">База</a>
       <a href="#gallery">Галерея</a>
       <a href="#awards">Награды</a>
-      <a href="#cups">Кубки</a>
       <a href="#trips">Поездки</a>
       <a href="#news">Новости</a>
       <a href="#video">Видео</a>
@@ -796,20 +795,7 @@ footer {
     </div>
   </div>
 </section>
-    <section class="section" id="cups">
-    <div class="container">
-      <div class="section-head">
-        <p class="kicker">Достижения</p>
-        <h2>Кубки студии</h2>
-      </div>
-      <div style="display:grid; grid-template-columns:repeat(auto-fill,minmax(180px,1fr)); gap:20px;">
-        <div class="cup" data-title="Badener Jahreszeit 2014" data-desc="Kinderkolkolstudio «The Best», Angarsk, Russland"
-             style="cursor:pointer; background:#141419; border:1px solid #2a2a35; border-radius:16px; padding:20px;">
-          <img src="cups/cup1.png" alt="Кубок" style="width:100%; height:240px; object-fit:contain; display:block;">
-        </div>
-      </div>
-    </div>
-  </section>
+    
   <section id="trips" class="section">
   <div class="container">
     <div class="section-head">
@@ -1031,7 +1017,6 @@ if (burger && nav) {
 document.getElementById('year').textContent = new Date().getFullYear();
 </script>
 
-</body>
   <div id="lightbox" style="display:none; position:fixed; inset:0; background:rgba(0,0,0,.92); z-index:9999; align-items:center; justify-content:center; cursor:zoom-out; padding:20px;">
   <img id="lightbox-img" src="" alt="" style="max-width:95%; max-height:95%; border-radius:12px;">
 </div>
@@ -1049,23 +1034,5 @@ document.addEventListener('keydown', function(e){
   if (e.key === 'Escape') document.getElementById('lightbox').style.display = 'none';
 });
 </script>
-  <div id="cupModal" style="display:none; position:fixed; inset:0; background:rgba(0,0,0,.92); z-index:9999; align-items:center; justify-content:center; padding:20px;" onclick="if(event.target===this)this.style.display='none'">
-  <div style="background:#141419; border:1px solid #2a2a35; border-radius:16px; padding:28px; max-width:520px; width:100%;">
-    <h3 id="cupTitle" style="margin-top:0;"></h3>
-    <p id="cupDesc" style="color:#a9a9b5; margin-bottom:0;"></p>
-  </div>
-</div>
-<script>
-document.addEventListener('click', function(e){
-  var cup = e.target.closest('.cup');
-  if (cup) {
-    document.getElementById('cupTitle').textContent = cup.dataset.title;
-    document.getElementById('cupDesc').textContent = cup.dataset.desc;
-    document.getElementById('cupModal').style.display = 'flex';
-  }
-});
-document.addEventListener('keydown', function(e){
-  if (e.key === 'Escape') document.getElementById('cupModal').style.display = 'none';
-});
-</script>
-</html>
+  </body>
+  </html>
